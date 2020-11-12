@@ -41,7 +41,18 @@ class Airplane {
 */
 
 class Person {
+  constructor(att)
+  this.name = att.name;
+  this.age = att.age;
+  this.stomach = []
+}
+eat(someFood)
+poop()
 
+const personOne extends Person{
+  constructor(att){
+    super()
+  }
 }
 
 /*
@@ -59,9 +70,14 @@ class Person {
 */
 
 class Car {
-
+  constructor(att){
+    this.model = att.model;
+    this.milesPerGallon = att.milesPerGallon;
+    this.tank = 0
+    this.odometer = 0
+  }
 }
-
+console.log(``)
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -75,7 +91,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(prop){
+    this.name = prop.name;
+    this.age = prop.age;
+    this.location = prop.location;
+  }
+  speak(){
+    console.log(`Hello my name is ${this.name} I am from ${this.location}`)
+  }
 }
 
 /*
@@ -93,7 +116,7 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor {
-
+constructor(school);
 }
 
 /*
@@ -112,7 +135,11 @@ class Instructor {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student {
-
+  constructor(att){
+    this.previousBackground = att.previousBackground;
+    this.className = att.className;
+    this.favSubjects = att.favSubjects
+  }
 }
 
 /*
@@ -129,9 +156,19 @@ class Student {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager {
-
+  constructor(school){
+    this.gradClassName = school.gradClassName;
+    this.favInstructor = school.favInstructor;
+  }
 }
-
+class Instructor extends ProjectManager{
+  constructor(att){
+    super(att);
+  }
+  standUp(){
+    console.log
+  }
+}
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
