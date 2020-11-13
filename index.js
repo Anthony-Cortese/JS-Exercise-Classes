@@ -41,19 +41,28 @@ class Airplane {
 */
 
 class Person {
-  constructor(att)
-  this.name = att.name;
-  this.age = att.age;
+  constructor(name, age){
+  this.name = name;
+  this.age = age;
   this.stomach = []
-}
-eat(someFood)
-poop()
-
-const personOne extends Person{
-  constructor(att){
-    super()
+}  
+eat(someFood){
+  if(this.stomach.length <10){
+    this.stomach.push(someFood)
   }
 }
+  poop(){
+    this.stomach = [];
+  }
+toString(){
+  return (`${this.name}, ${this.age}`);
+}
+}
+// // const personOne extends Person{
+//   constructor(att){
+//     super()
+//   }
+// }
 
 /*
   TASK 2
@@ -70,14 +79,26 @@ const personOne extends Person{
 */
 
 class Car {
-  constructor(att){
-    this.model = att.model;
-    this.milesPerGallon = att.milesPerGallon;
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
     this.tank = 0
     this.odometer = 0
   }
+fill(gallons){
+  this.tank = this.tank + gallons
 }
-console.log(``)
+drive(distance){
+  let totalMiles = this.milesPerGallon * this.tank
+  this.odometer = distance + this.odometer
+  this.tank = this.tank - this.milesPerGallon * distance
+  if(totalMiles < distance){
+    this.tank = 0
+    this.odometer = totalMiles
+    return (`I ran out of fuel at ${this.odometer} miles`)
+  }
+}
+}
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -116,7 +137,7 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor {
-constructor(school);
+cons
 }
 
 /*
@@ -134,13 +155,26 @@ constructor(school);
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian {
   constructor(att){
+    super(att)
     this.previousBackground = att.previousBackground;
     this.className = att.className;
     this.favSubjects = att.favSubjects
   }
+listSubjects() {
+  return `Loving ${this.favSubjects}`;
 }
+PRAssignments (subject){
+  return `${this.name} has submitted a PR for ${subject}`
+}
+sprintChallenge(subject){
+  return `${this.name} has begun sprint challenge on ${subject}`
+}
+}
+const student = new Student ({
+  name: 'Tara'
+})
 
 /*
   TASK 6
@@ -155,20 +189,18 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-  constructor(school){
-    this.gradClassName = school.gradClassName;
-    this.favInstructor = school.favInstructor;
+class ProjectManager extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.gradClassName;
   }
-}
-class Instructor extends ProjectManager{
-  constructor(att){
-    super(att);
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
   }
-  standUp(){
-    console.log
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
   }
-}
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
