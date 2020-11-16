@@ -136,9 +136,25 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-cons
+class Instructor extends Lambdasian {
+constructor(prop){
+super (prop)  
+this.specialty = prop.specialty;
+this.favLanguage = prop.favLanguage;
+this.catchPhrase = prop.catchPhrase;
+ demo(){
+   return `Today we are learning about ${subject}`;
+ grade(){
+   return '${student.name} receives a perfect score on ${subject}'
+ }  
+ } 
+  }
 }
+const person = new Lambdasian({
+  specialty: 'redux',
+  favLanguage: 'Javascript, Python, Elm etc.',
+  catchPhrase: 'Dont forget the homies., 
+});
 
 /*
   TASK 5
@@ -156,11 +172,11 @@ cons
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian {
-  constructor(att){
-    super(att)
-    this.previousBackground = att.previousBackground;
-    this.className = att.className;
-    this.favSubjects = att.favSubjects
+  constructor(prop){
+    super(prop)
+    this.previousBackground = prop.previousBackground;
+    this.className = prop.className;
+    this.favSubjects = prop.favSubjects
   }
 listSubjects() {
   return `Loving ${this.favSubjects}`;
@@ -173,7 +189,7 @@ sprintChallenge(subject){
 }
 }
 const student = new Student ({
-  name: 'Tara'
+  name: 'Luke'
 })
 
 /*
